@@ -1,0 +1,97 @@
+
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block style %}
+/* static/css/dashboard.css */
+
+#wrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 250px;
+    transition: margin 0.25s ease-out;
+}
+
+#page-content-wrapper {
+    flex: 1;
+    padding: 20px;
+}
+
+.toggled #sidebar-wrapper {
+    margin-left: -250px;
+}
+{% endblock style %}
+
+{% block content %}
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-dark border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading text-white">AURA - Dashboard</div>
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Home</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Profile</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Settings</a>
+            <a href="{% url "logout" %}" class="list-group-item list-group-item-action bg-dark text-white">Logout</a>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <h4 class="ml-3">Welcome to the Dashboard</h4>
+        </nav>
+
+        <div class="container-fluid">
+            <h2 class="mt-4">Dashboard Overview</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 1</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 2</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 3</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+
+<script>
+    // Script to toggle the sidebar
+    document.getElementById("menu-toggle").onclick = function () {
+        var wrapper = document.getElementById("wrapper");
+        wrapper.classList.toggle("toggled");
+    };
+</script>
+{% endblock content %}
+
